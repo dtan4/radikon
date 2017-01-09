@@ -516,6 +516,10 @@ find-up@^1.0.0:
     path-exists "^2.0.0"
     pinkie-promise "^2.0.0"
 
+flash-player-loader@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/flash-player-loader/-/flash-player-loader-1.2.0.tgz#364a92afefc5a4e3c9f5be581168ee8bcbd66614"
+
 flat-cache@^1.2.1:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/flat-cache/-/flat-cache-1.2.2.tgz#fa86714e72c21db88601761ecf2f555d1abc6b96"

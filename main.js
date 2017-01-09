@@ -1,19 +1,35 @@
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+const flashLoader = require('flash-player-loader');
 
 const path = require('path');
 const url = require('url');
 
 let mainWindow;
 
-function createWindow () {
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+let chromeFlashes = flashLoader.getAllChromeFlashVersions();
 
-  mainWindow.loadURL('http://radiko.jp/');
+chromeFlashes.forEach((cf) => flashLoader.addSource(cf[1]));
+flashLoader.load();
+
+function createWindow () {
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      plugins: true,
+    },
+  });
+
+  mainWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'index.html'),
+    protocol: 'file:',
+    slashes: true,
+  }));
 
   mainWindow.on('closed', function () {
-    mainWindow = null
+    mainWindow = null;
   });
 }
 
